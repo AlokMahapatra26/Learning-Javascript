@@ -13,3 +13,17 @@ console.log(isLoggedin);
 
 let num2 = String(23);
 console.log(typeof num2);
+
+// ************* Operator **************
+
+// console.log(2+2);
+// console.log(2-2);
+// console.log(2*2);
+// console.log(2**2);
+// console.log(2/3);
+// console.log(2%3);
+
+// console.log("1" + 2);
+// console.log(1 + "2" + 2 + 3);
+// console.log(1 + 2 + "2");
+console.log( true + "");
