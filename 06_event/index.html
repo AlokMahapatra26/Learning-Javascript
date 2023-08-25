@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: red;
+            height: 100px;
+            width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: aquamarine;
+            font-weight: bold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            border-radius: 10px;
+        }
+        .btn{
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btn:hover{
+            background-color: rgb(18, 31, 145);
+            color: white;
+            transition: 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">ALOK</div>
+    <button class="btn"> Move</button>
+</body>
+<script>
+    const box = document.querySelector('.box');
+    const btn = document.querySelector(".btn");
+    
+    //addEventListerner
+    // btn.addEventListener('click',(e)=>{
+    //     console.log(e.timeStamp)
+    //     e.stopPropagation(); 
+    // },false);
+
+    //types , timestamp , defaultPrevented
+    // target , toElement , srcElement
+    //clientX , clientY , screenX , screenY
+    //altkey , ctlkey , shiftkey , keyCode
+
+    //3rd arguement in add event listerner is true -> event capturing (outer to inner) , false -> event bubbling (default - inner to outer) 
+
+    //e.stopPropagation -> 2 element inner and outer both have some event to agar inner wala click karta hoon to outer wala bhi chal jayega kyunki usmein bhi event listerner hai usko rokne ke liye hum ye wala method use karenge 
+
+
+    
+</script>
+</html>

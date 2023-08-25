@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-container{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            
+        }
+        .card{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0,0,0,0.2);
+            border-radius: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            
+            
+
+        }
+
+        .img-container{
+            border-right: 1px solid rgba(0,0,0,0.2);
+           
+            
+        }
+
+        .data-container{
+            padding: 10px;
+            
+        }
+
+        #userImage{
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 0 2px gray;
+            background-size: cover;
+            
+        }
+        
+        input{
+            padding: 10px 10px;
+            border: 1px solid rgba(0,0,0,0.2);
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+           
+        }
+
+       
+        p{
+            display: inline-block;
+        }
+
+        .btn{
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: #d4caca;
+            transition: 0.2s ease;
+        }
+        h4{
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h4>GitFinder</h4>
+        <div>
+            <input type="text" placeholder="Enter Username.." id="myInput">
+        <button class="btn">Enter</button>
+        </div>
+        
+        <div class="card">
+            <div class="img-container">
+                <img src="" alt="" id="userImage">
+            </div>
+            <div class="data-container">
+                <div>
+                    <p >Follower : </p>
+                    <span id="follower"></span>
+                </div>
+                <div>
+                    <p > Following : </p>
+                    <span id="following"></span>
+                </div>
+                <div>
+                    <p > Created At : </p>
+                    <span id="create-date"></span>
+                </div>
+
+                
+            </div>
+        </div>
+       
+    </div>
+</body>
+<script>
+
+    const userImage = document.querySelector('#userImage');
+    const followerCount = document.querySelector('#follower');
+    const followingCount = document.querySelector("#following");
+    const createDate = document.querySelector('#create-date')
+    const enterBtn = document.querySelector('.btn');
+    const inputField = document.querySelector('#myInput');
+    const cardComponent = document.querySelector('.card');
+
+    cardComponent.style.display = 'none'
+    
+
+    let user;
+    enterBtn.addEventListener('click',()=>{
+        cardComponent.style.display = 'inline-block'
+         user = inputField.value;
+        console.log(user)
+        const requestUrl = `https://api.github.com/users/${user}`
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState)
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText);
+            let imageUrl = data.avatar_url;
+            userImage.src = imageUrl
+
+            let followerCounts = data.followers;
+            followerCount.innerText = followerCounts;
+            
+            let followingCounts = data.following;
+            followingCount.innerText = followingCounts;
+
+            const isoString = data.created_at;
+            const date = new Date(isoString);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+            const formattedDate = date.toLocaleString('en-US', options);
+            
+            let createdAt = formattedDate;
+            createDate.innerText = createdAt;
+            
+            
+        }
+    }
+
+
+    xhr.send()
+    })
+
+
+</script>
+</html>

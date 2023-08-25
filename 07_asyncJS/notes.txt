@@ -1,0 +1,7 @@
+=> Default Javascript 
+-> Synchronous
+-> Single threaded
+
+Blocking code -> Block the flow of program -> Read File Sync
+Non Blocking code -> Do not block execution -> Read File Async
+

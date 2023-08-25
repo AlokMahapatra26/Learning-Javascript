@@ -1,0 +1,20 @@
+// const user = {
+//     username : "alok",
+//     loginCount : 8,
+//     signedIn : true,
+
+//     getUserDetails : function(){
+//         console.log("Got user details")
+//     }
+// }
+
+function User(username , loginCount , isLoggedIn){
+    this.username = username;
+    this.loginCount = loginCount;
+    this.isLoggedIn = isLoggedIn
+}
+
+const userOne = new User("Alok" , 12 , true);
+const userTwo = new User("Aarti" , 17 , true);
+
+console.log(userOne);

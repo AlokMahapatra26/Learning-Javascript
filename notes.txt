@@ -1,2 +1,0 @@
-Deep copy -> creates new copy
-Shallow copy -> gives reference of original value 
